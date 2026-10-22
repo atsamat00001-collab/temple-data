@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>ทะเบียนข้อมูลวัด คณะสงฆ์อำเภออาจสามารถ จังหวัดร้อยเอ็ด</title>
+<style>
+:root{--navy:#17324d;--blue:#235b82;--gold:#c79a36;--paper:#fff;--bg:#f3f6f9;--ink:#1f2937;--muted:#667085;--line:#d9e1e8;--green:#176b4d;--red:#a32929}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Tahoma,"Leelawadee UI",sans-serif;font-size:14px;line-height:1.55}
+header{background:linear-gradient(120deg,#17324d,#285e7e);color:white;padding:26px 18px 22px;border-bottom:5px solid var(--gold)}.head-inner{max-width:1600px;margin:auto}h1{font-size:clamp(21px,3vw,32px);margin:0 0 6px;line-height:1.35}header p{margin:0;color:#e6eef4}.wrap{max-width:1600px;margin:20px auto;padding:0 16px}
+.panel{background:white;border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:18px;box-shadow:0 3px 14px #19344b0a}.panel h2{font-size:19px;color:var(--navy);margin:0 0 12px}.toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.role-pill{font-weight:bold;padding:7px 12px;border-radius:99px;background:#e8f4ee;color:var(--green)}.role-pill.admin{background:#fff0d0;color:#795000}
+button,.button{border:0;border-radius:9px;padding:10px 13px;font:inherit;font-weight:bold;cursor:pointer;background:var(--blue);color:white;transition:transform .12s,filter .12s}button:hover{filter:brightness(1.08)}button:active{transform:translateY(1px)}button.secondary{background:#e8edf2;color:#24384a}button.gold{background:#946b11}button.danger{background:#a32929}button.green{background:#176b4d}button:disabled{opacity:.45;cursor:not-allowed}
+input,select,textarea{font:inherit;border:1px solid #cbd5df;border-radius:7px;padding:8px 9px;background:#fff;color:var(--ink);min-width:0;width:100%}input:focus,select:focus,textarea:focus{outline:2px solid #8db9d5;outline-offset:1px}input[readonly],input:disabled,select:disabled{background:#f1f3f5;color:#525d68;opacity:1}.login-row{display:flex;gap:8px;max-width:470px}.login-row input{flex:1}.hint{font-size:12px;color:var(--muted);margin:8px 0 0}.status{margin-top:10px;font-weight:bold;min-height:22px}.zones{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:9px}.zone-btn{background:#edf2f6;color:#263e51;border:1px solid #d5dfe7;text-align:left;min-height:55px}.zone-btn.active{background:var(--navy);color:white;border-color:var(--gold);box-shadow:inset 0 -3px var(--gold)}.zone-btn small{display:block;font-weight:normal;opacity:.8}
+.export-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px}.export-grid button{height:100%;text-align:left;line-height:1.45}.export-grid button span{display:block;font-weight:normal;font-size:12px;opacity:.88;margin-top:4px}
+.table-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.table-head h2{margin-bottom:3px}.table-scroll{overflow:auto;border:1px solid var(--line);border-radius:10px;margin-top:14px;max-height:72vh}table.data{border-collapse:separate;border-spacing:0;width:max-content;min-width:100%;background:white}table.data th,table.data td{border-right:1px solid #dfe5ea;border-bottom:1px solid #dfe5ea;padding:7px;vertical-align:top;min-width:145px}table.data th{background:#eaf0f5;color:#18374f;position:sticky;top:0;z-index:2;text-align:left;font-size:12px}table.data th:first-child,table.data td:first-child{min-width:58px;text-align:center}table.data td input,table.data td select{min-width:130px}table.data td .small-input{min-width:88px;width:88px}table.data td .date-input{min-width:140px}table.data td .field-label{font-size:11px;color:#687684;display:block;margin-bottom:3px}table.data tr:hover td{background:#fcfdff}.section-row th{background:#dbe7ef!important;text-align:center!important;font-size:13px!important}.empty-note{padding:22px;text-align:center;color:var(--muted)}.record-tools{display:flex;gap:6px;min-width:125px;flex-direction:column}.record-tools button{padding:7px;font-size:12px}.images-details{min-width:240px}.images-details summary{cursor:pointer;font-weight:bold;color:var(--blue)}.image-grid{display:grid;grid-template-columns:repeat(2,minmax(100px,1fr));gap:9px;margin-top:10px}.image-slot{border:1px dashed #c4ced8;border-radius:8px;padding:8px;font-size:12px}.image-slot img{width:100%;height:100px;object-fit:contain;background:#f6f8fa;border-radius:5px;margin:6px 0}.image-slot input{font-size:11px;padding:5px}.image-slot .remove-img{margin-top:5px;padding:5px 7px;font-size:11px}.locked-note{font-size:11px;color:#687684;margin-top:5px}
+footer{padding:22px;text-align:center;color:var(--muted);font-size:12px}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#17324d;color:white;padding:11px 18px;border-radius:10px;box-shadow:0 6px 24px #0002;z-index:1000;max-width:90vw;display:none}.muted{color:var(--muted)}.hide{display:none!important}
+@media(max-width:700px){.wrap{padding:0 9px;margin:12px auto}.panel{padding:13px}.login-row{max-width:none}.table-scroll{max-height:68vh}header{padding:20px 14px}.zones{grid-template-columns:repeat(2,minmax(0,1fr))}.zone-btn{padding:9px;font-size:12px}}
+@media print{
+ @page{size:A4 landscape;margin:12mm}
+ body{background:white;color:#000;font-size:9pt}header{background:white!important;color:#000!important;border-bottom:2px solid #333;padding:0 0 8px}header p{color:#333}.wrap{max-width:none;margin:0;padding:0}.no-print,.panel:not(#print-area),footer,.toolbar,.record-tools,.images-details input,.images-details button{display:none!important}#print-area{border:0;box-shadow:none;padding:0;margin:0}.table-scroll{overflow:visible;max-height:none;border:0}table.data{width:100%;min-width:0;border-collapse:collapse;table-layout:auto}table.data th,table.data td{position:static;min-width:0;padding:4px;border:1px solid #777;overflow-wrap:anywhere;font-size:7pt}table.data th{background:#eee!important;color:#000!important}table.data td input,table.data td select{border:0;padding:0;background:transparent;min-width:0;width:auto;color:#000;font-size:7pt;appearance:none}table.data td input:placeholder-shown{display:none}.images-details summary{display:none}.images-details[open] .image-grid{display:grid}.image-slot img{max-height:55px;height:55px}.image-slot{padding:2px;border:0}.image-slot input,.remove-img{display:none!important}tr{break-inside:avoid}thead{display:table-header-group}h1{font-size:17pt}.panel h2{font-size:13pt}
+}
+</style>
+</head>
+<body>
+<header><div class="head-inner"><h1>ทะเบียนข้อมูลวัด คณะสงฆ์อำเภออาจสามารถ</h1><p>จังหวัดร้อยเอ็ด · ระบบทะเบียนข้อมูลวัดสำหรับใช้งานภายในเครื่อง</p></div></header>
+<main class="wrap">
+<section class="panel no-print" aria-label="สิทธิ์ผู้ใช้งาน">
+ <h2>🔐 สิทธิ์ผู้ใช้งาน</h2>
+ <div class="toolbar"><span id="role-pill" class="role-pill">👤 โหมดบุคคลทั่วไป</span><button id="admin-toggle" class="gold" type="button">🔑 เข้าสู่โหมดแอดมิน</button><button id="logout-btn" class="secondary hide" type="button">ออกจากโหมดแอดมิน</button><span class="muted">บุคคลทั่วไปเพิ่มข้อมูลในช่องว่างได้ แต่แก้ไขข้อมูลเดิมและลบไม่ได้</span></div>
+ <div id="login-box" class="hide" style="margin-top:12px"><form id="login-form" class="login-row"><input id="admin-password" type="password" autocomplete="current-password" placeholder="กรอกรหัสผ่านแอดมิน" aria-label="รหัสผ่านแอดมิน" required><button type="submit">ยืนยันรหัสผ่าน</button></form></div>
+ <div id="role-message" class="status" aria-live="polite"></div>
+</section>
+<section class="panel no-print"><h2>📍 เลือกเขตปกครอง</h2><p class="hint">เลือกเขตเพื่อเลื่อนไปยังตารางของเขตนั้นโดยอัตโนมัติ</p><div id="zone-grid" class="zones"></div></section>
+<section class="panel no-print"><h2>📦 ส่งออกข้อมูลรวมทั้งอำเภอ</h2><div class="export-grid">
+<button id="export-excel" type="button">📊 ข้อมูลทั้งหมดของวัดในอำเภออาจสามารถ สำหรับดาวน์โหลดเป็นไฟล์ Excel (แก้ไขได้)<span>ไฟล์ .xls แบบ XML Spreadsheet แยก 16 แผ่นงาน เปิดแก้ไขต่อใน Excel ได้</span></button>
+<button id="export-word" type="button">📝 ข้อมูลทั้งหมดของวัดในอำเภออาจสามารถ สำหรับดาวน์โหลดเป็นไฟล์ Word (แก้ไขได้)<span>ไฟล์ .doc ที่เปิดแก้ไขตารางต่อใน Word ได้</span></button>
+<button id="print-current" class="green" type="button">🖨️ ข้อมูลทั้งหมดของวัดในอำเภออาจสามารถ สำหรับสั่งพิมพ์เอกสารออกเครื่องปริ้น<span>เลือกพิมพ์เฉพาะเขตปัจจุบัน หรือทุกเขต</span></button>
+</div><p class="hint">การส่งออกทำงานภายในไฟล์นี้ ไม่ใช้ไลบรารีหรือบริการอินเทอร์เน็ตภายนอก</p></section>
+<section id="print-area" class="panel"><div class="table-head"><div><h2 id="current-zone-title">ทะเบียนข้อมูลวัด — อาจสามารถ เขต 1</h2><div id="table-subtitle" class="hint">กรอกข้อมูลในช่องที่อนุญาต แล้วกดบันทึกแถว</div></div><div class="toolbar no-print"><button id="add-row" class="green hide" type="button">＋ เพิ่มแถววัด</button><button id="save-all" type="button">💾 บันทึกข้อมูลเขตนี้</button></div></div><div id="table-container"></div></section>
+</main>
+<footer>ทะเบียนข้อมูลวัด คณะสงฆ์อำเภออาจสามารถ จังหวัดร้อยเอ็ด · จัดเก็บข้อมูลใน LocalStorage ของเบราว์เซอร์เครื่องนี้</footer>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script>
+'use strict';
+(() => {
+const STORAGE_KEY = 'at_samat_temple_registry_v1';
+const ZONES = ['อาจสามารถ เขต 1','อาจสามารถ เขต 2','หนองขาม เขต 1','หนองขาม เขต 2','หนองหมื่นถ่าน เขต 1','หนองหมื่นถ่าน เขต 2','โพนเมือง เขต 1','โพนเมือง เขต 2','โหรา เขต 1','โหรา เขต 2','หน่อม เขต 1','หน่อม เขต 2','หนองบัว','แจ้ง','ขี้เหล็ก','ดู่'];
+const FIELDS = [
+ {key:'templeCode',label:'รหัสวัด',group:'ข้อมูลทั่วไปของวัด'},
+ {key:'templeName',label:'ชื่อวัด'},
+ {key:'templeStatus',label:'สถานะวัด',type:'select',options:['พระอารามหลวง','วัดราษฎร์','สำนักสงฆ์']},
+ {key:'sect',label:'นิกาย',type:'select',options:['มหานิกาย','ธรรมยุต']},
+ {key:'establishedDate',label:'วันที่ตั้งวัด',type:'date'},
+ {key:'visungamDate',label:'วันที่ได้รับวิสุงคามสีมา',type:'date'},
+ {key:'permissionNo',label:'เลขที่หนังสืออนุญาตตั้งวัด'},
+ {key:'address',label:'ที่ตั้งวัด'},
+ {key:'latitude',label:'พิกัดละติจูด'},
+ {key:'longitude',label:'พิกัดลองจิจูด'},
+ {key:'deedNo',label:'เลขที่โฉนดที่ดิน'},
+ {key:'rai',label:'พื้นที่ (ไร่)',type:'number'},
+ {key:'ngan',label:'พื้นที่ (งาน)',type:'number'},
+ {key:'squareWa',label:'พื้นที่ (ตารางวา)',type:'number'},
+ {key:'electricity',label:'ไฟฟ้า',type:'select',options:['มี','ไม่มี']},
+ {key:'waterSupply',label:'น้ำประปา',type:'select',options:['มี','ไม่มี']},
+ {key:'crematorium',label:'มีฌาปนสถานหรือไม่',type:'select',options:['มี','ไม่มี']},
+ {key:'abbotName',label:'ชื่อและสมณศักดิ์เจ้าอาวาส',group:'คณะสงฆ์และบุคลากร'},
+ {key:'abbotPhone',label:'เบอร์โทรเจ้าอาวาส',type:'tel'},
+ {key:'dhammaEducation',label:'การศึกษาสายธรรม'},
+ {key:'generalEducation',label:'การศึกษาสายสามัญ'},
+ {key:'monksCount',label:'พระภิกษุจำพรรษาปัจจุบัน (รูป)',type:'number'},
+ {key:'novicesCount',label:'สามเณรจำพรรษาปัจจุบัน (รูป)',type:'number'},
+ {key:'templeStewardName',label:'ชื่อไวยาวัจกร'},
+ {key:'templeStewardPhone',label:'เบอร์โทรไวยาวัจกร',type:'tel'}
+];
+const IMAGE_FIELDS = [
+ {key:'abbotPhoto',label:'รูปถ่ายเจ้าอาวาส'},
+ {key:'stewardPhoto',label:'รูปถ่ายไวยาวัจกร'},
+ {key:'ubosotPhoto',label:'รูปอุโบสถ (โบสถ์)'},
+ {key:'salaPhoto',label:'รูปศาลาการเปรียญ'},
+ {key:'otherBuildingPhoto',label:'รูปอาคารอื่น ๆ ภายในวัด'}
+];
+const $ = id => document.getElementById(id);
+let isAdmin = false;
+let currentZone = ZONES[0];
+let printZones = null;
+let toastTimer = null;
+
+function emptyRecord(){ const r={}; FIELDS.forEach(f=>r[f.key]=''); IMAGE_FIELDS.forEach(f=>r[f.key]=''); r._id=makeId(); return r; }
+function makeId(){return 't'+Date.now().toString(36)+Math.random().toString(36).slice(2,8);}
+function loadData(){
+ try{
+  const raw=localStorage.getItem(STORAGE_KEY);
+  if(!raw) return Object.fromEntries(ZONES.map(z=>[z,[]]));
+  const parsed=JSON.parse(raw);
+  const result={};
+  ZONES.forEach(z=>result[z]=Array.isArray(parsed[z])?parsed[z].map(r=>normalizeRecord(r)):[]);
+  return result;
+ }catch(e){console.error('อ่านข้อมูลจาก LocalStorage ไม่สำเร็จ',e);return Object.fromEntries(ZONES.map(z=>[z,[]]));}
+}
+function normalizeRecord(record){const r=emptyRecord();FIELDS.forEach(f=>r[f.key]=record?.[f.key]??'');IMAGE_FIELDS.forEach(f=>r[f.key]=record?.[f.key]??'');r._id=record?._id||makeId();return r;}
+let data=loadData();
+function persist(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(data));return true;}catch(e){console.error(e);showToast('บันทึกไม่สำเร็จ: พื้นที่ LocalStorage อาจเต็ม โดยเฉพาะเมื่อมีรูปภาพขนาดใหญ่');return false;}}
+function escapeHtml(value){return String(value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));}
+function showToast(message){const el=$('toast');el.textContent=message;el.style.display='block';clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.style.display='none',3500);}
+function isBlank(value){return value===null||value===undefined||String(value).trim()==='';}
+function fieldAllowed(record,field){return isAdmin||isBlank(record[field.key]);}
+function makeZoneButtons(){
+ $('zone-grid').innerHTML=ZONES.map((z,i)=>`<button type="button" class="zone-btn${z===currentZone?' active':''}" data-zone="${escapeHtml(z)}"><strong>${String(i+1).padStart(2,'0')} · ${escapeHtml(z)}</strong><small>${data[z].length} รายการวัด</small></button>`).join('');
+ $('zone-grid').querySelectorAll('[data-zone]').forEach(btn=>btn.addEventListener('click',()=>selectZone(btn.dataset.zone)));
+}
+function selectZone(zone){currentZone=zone;makeZoneButtons();renderTable();$('current-zone-title').textContent='ทะเบียนข้อมูลวัด — '+zone;$('table-container').scrollIntoView({behavior:'smooth',block:'start'});}
+function updateRoleUI(){
+ $('role-pill').textContent=isAdmin?'🔑 โหมดแอดมิน':'👤 โหมดบุคคลทั่วไป';
+ $('role-pill').classList.toggle('admin',isAdmin);
+ $('admin-toggle').classList.toggle('hide',isAdmin);
+ $('logout-btn').classList.toggle('hide',!isAdmin);
+ $('login-box').classList.add('hide');
+ $('add-row').classList.toggle('hide',!isAdmin);
+ $('role-message').textContent=isAdmin?'เปิดสิทธิ์แอดมินแล้ว: แก้ไขข้อมูลเดิม อัปโหลดรูป และลบแถวได้':'โหมดบุคคลทั่วไป: กรอกได้เฉพาะช่องว่าง และบันทึกได้โดยไม่แก้ข้อมูลเดิม';
+ renderTable();
+}
+function makeFieldInput(record,field,zone,idx){
+ const value=record[field.key]??'';
+ const allowed=fieldAllowed(record,field);
+ const disabled=!allowed;
+ const cls=field.type==='date'?'date-input':(field.type==='number'?'small-input':'');
+ const attrs=`data-field="${field.key}" data-zone="${escapeHtml(zone)}" data-index="${idx}"`;
+ if(field.type==='select'){
+  const opts=field.options.map(o=>`<option value="${escapeHtml(o)}"${value===o?' selected':''}>${escapeHtml(o)}</option>`).join('');
+  return `<select ${attrs} ${disabled?'disabled':''} aria-label="${escapeHtml(field.label)}"><option value="">— เลือก —</option>${opts}</select>`;
+ }
+ const type=['date','number','tel'].includes(field.type)?field.type:'text';
+ return `<input ${attrs} type="${type}" class="${cls}" value="${escapeHtml(value)}" ${disabled?'disabled':''} placeholder="${isAdmin?'กรอก'+escapeHtml(field.label):'ช่องว่างเท่านั้น'}" aria-label="${escapeHtml(field.label)}">`;
+}
+function renderTable(){
+ const records=data[currentZone].length?data[currentZone]:[emptyRecord()];
+ let html='<div class="table-scroll"><table class="data"><thead><tr><th>ลำดับ</th>';
+ FIELDS.forEach(f=>html+=`<th>${escapeHtml(f.label)}</th>`);
+ html+='<th>ภาพประกอบ 5 รายการ</th><th class="no-print">จัดการ</th></tr></thead><tbody>';
+ records.forEach((record,idx)=>{
+  html+=`<tr data-row="${idx}"><td>${idx+1}</td>`;
+  FIELDS.forEach(f=>html+=`<td>${makeFieldInput(record,f,currentZone,idx)}</td>`);
+  html+=`<td>${renderImages(record,currentZone,idx)}</td><td class="no-print"><div class="record-tools"><button type="button" class="save-row" data-index="${idx}" data-zone="${escapeHtml(currentZone)}">💾 บันทึกแถว</button>${isAdmin?`<button type="button" class="danger delete-row" data-index="${idx}" data-zone="${escapeHtml(currentZone)}">ลบแถววัด</button>`:''}</div>${!isAdmin?'<div class="locked-note">ข้อมูลเดิมถูกล็อก</div>':''}</td></tr>`;
+ });
+ html+='</tbody></table></div>';
+ if(!data[currentZone].length)html+='<p class="hint">ยังไม่มีรายการในเขตนี้ คุณสามารถกรอกช่องว่างด้านบนแล้วกด “บันทึกแถว” เพื่อสร้างรายการแรกได้</p>';
+ $('table-container').innerHTML=html;
+ $('table-container').querySelectorAll('.save-row').forEach(b=>b.addEventListener('click',()=>saveRow(b.dataset.zone,Number(b.dataset.index))));
+ $('table-container').querySelectorAll('.delete-row').forEach(b=>b.addEventListener('click',()=>deleteRow(b.dataset.zone,Number(b.dataset.index))));
+ $('table-container').querySelectorAll('input[data-field],select[data-field]').forEach(el=>el.addEventListener('change',()=>{el.dataset.changed='1';}));
+ $('table-container').querySelectorAll('input[type=file][data-image]').forEach(el=>el.addEventListener('change',handleImageUpload));
+ $('table-container').querySelectorAll('[data-remove-image]').forEach(b=>b.addEventListener('click',()=>removeImage(b.dataset.zone,Number(b.dataset.index),b.dataset.removeImage)));
+}
+function renderImages(record,zone,idx){
+ let html='<details class="images-details"><summary>เปิดดู/จัดการรูปภาพ</summary><div class="image-grid">';
+ IMAGE_FIELDS.forEach(f=>{
+  const src=record[f.key];
+  html+=`<div class="image-slot"><strong>${escapeHtml(f.label)}</strong>${src?`<img src="${src}" alt="${escapeHtml(f.label)}">`:'<div class="empty-note">ยังไม่มีรูป</div>'}`;
+  if(isAdmin)html+=`<input type="file" accept="image/*" data-image="${f.key}" data-zone="${escapeHtml(zone)}" data-index="${idx}" aria-label="อัปโหลด${escapeHtml(f.label)}">${src?`<button type="button" class="danger remove-img" data-zone="${escapeHtml(zone)}" data-index="${idx}" data-remove-image="${f.key}">ลบรูป</button>`:''}`;
+  html+='</div>';
+ });
+ return html+'</div></details>';
+}
+function collectRowInputs(zone,idx){
+ const inputs=$('table-container').querySelectorAll(`[data-zone="${CSS.escape(zone)}"][data-index="${idx}"][data-field]`);
+ const updates={};
+ inputs.forEach(el=>updates[el.dataset.field]=el.value);
+ return updates;
+}
+function saveRow(zone,idx){
+ const existing=data[zone][idx];
+ const isVirtual=!existing;
+ const record=existing?normalizeRecord(existing):emptyRecord();
+ const updates=collectRowInputs(zone,idx);
+ for(const field of FIELDS){
+  const key=field.key;
+  if(Object.prototype.hasOwnProperty.call(updates,key)){
+   if(isAdmin||isBlank(record[key]))record[key]=updates[key];
+   else if(updates[key]!==record[key]){showToast('ระบบป้องกันข้อมูลเดิม: บุคคลทั่วไปแก้ไขช่องที่มีข้อมูลแล้วไม่ได้');}
+  }
+ }
+ if(isVirtual)data[zone].push(record);else data[zone][idx]=record;
+ if(persist()){makeZoneButtons();renderTable();showToast('บันทึกข้อมูลเรียบร้อยแล้ว');}
+}
+function saveCurrentZone(){
+ const count=data[currentZone].length?data[currentZone].length:1;
+ for(let i=count-1;i>=0;i--)saveRow(currentZone,i);
+}
+function addRow(){
+ if(!isAdmin)return;
+ data[currentZone].push(emptyRecord());
+ if(persist()){makeZoneButtons();renderTable();showToast('เพิ่มแถววัดแล้ว');}
+}
+function deleteRow(zone,idx){
+ if(!isAdmin)return;
+ if(!data[zone][idx])return;
+ const name=data[zone][idx].templeName||'รายการนี้';
+ if(!confirm(`ยืนยันลบ “${name}” ออกจากทะเบียนหรือไม่? การลบนี้ไม่สามารถย้อนกลับได้`))return;
+ data[zone].splice(idx,1);if(persist()){makeZoneButtons();renderTable();showToast('ลบแถววัดแล้ว');}
+}
+function handleImageUpload(event){
+ if(!isAdmin)return;
+ const input=event.currentTarget,file=input.files&&input.files[0];if(!file)return;
+ if(!file.type.startsWith('image/')){showToast('กรุณาเลือกไฟล์รูปภาพ');input.value='';return;}
+ const maxSize=2.5*1024*1024;
+ if(file.size>maxSize){showToast('รูปภาพมีขนาดใหญ่เกิน 2.5 MB กรุณาย่อขนาดก่อนอัปโหลด');input.value='';return;}
+ const zone=input.dataset.zone,idx=Number(input.dataset.index),key=input.dataset.image;
+ const reader=new FileReader();
+ reader.onload=()=>{const rec=data[zone][idx];if(!rec){showToast('กรุณาบันทึกแถววัดก่อนอัปโหลดรูป');return;}rec[key]=reader.result;if(persist()){renderTable();showToast('บันทึกรูปภาพเรียบร้อย');}};
+ reader.onerror=()=>showToast('อ่านไฟล์รูปภาพไม่สำเร็จ');
+ reader.readAsDataURL(file);
+}
+function removeImage(zone,idx,key){
+ if(!isAdmin||!data[zone][idx])return;
+ if(confirm('ยืนยันลบรูปภาพนี้หรือไม่?')){data[zone][idx][key]='';if(persist())renderTable();}
+}
+function downloadBlob(content,mime,filename){
+ const blob=new Blob(['\ufeff',content],{type:mime});
+ const url=URL.createObjectURL(blob),a=document.createElement('a');
+ a.href=url;a.download=filename;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);
+}
+function exportExcel(){
+ const xmlHeader='<?xml version="1.0" encoding="UTF-8"?><?mso-application progid="Excel.Sheet"?>';
+ const esc=escapeHtml;
+ let xml=xmlHeader+'<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet" xmlns:x="urn:schemas-microsoft-com:office:excel"><Styles><Style ss:ID="Header"><Font ss:Bold="1"/><Interior ss:Color="#D9E8F2" ss:Pattern="Solid"/></Style></Styles>';
+ ZONES.forEach(zone=>{
+  xml+=`<Worksheet ss:Name="${esc(zone.slice(0,31))}"><Table>`;
+  xml+='<Row>'+FIELDS.map(f=>`<Cell ss:StyleID="Header"><Data ss:Type="String">${esc(f.label)}</Data></Cell>`).join('')+'</Row>';
+  const records=data[zone];
+  (records.length?records:[emptyRecord()]).forEach(r=>{
+   xml+='<Row>'+FIELDS.map(f=>{const val=r[f.key]??'';return `<Cell><Data ss:Type="${f.type==='number'&&val!==''&&!Number.isNaN(Number(val))?'Number':'String'}">${esc(val)}</Data></Cell>`;}).join('')+'</Row>';
+  });
+  xml+='</Table><WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel"><FreezePanes/><FrozenNoSplit/><SplitHorizontal>1</SplitHorizontal><TopRowBottomPane>1</TopRowBottomPane><ActivePane>2</ActivePane></WorksheetOptions></Worksheet>';
+ });
+ xml+='</Workbook>';
+ downloadBlob(xml,'application/vnd.ms-excel;charset=utf-8','ทะเบียนข้อมูลวัด_อำเภออาจสามารถ.xls');
+}
+function exportWord(){
+ let html='<!DOCTYPE html><html lang="th"><head><meta charset="UTF-8"><style>body{font-family:Tahoma,sans-serif}h1{text-align:center}h2{background:#eaf0f5;padding:8px;page-break-before:always}table{border-collapse:collapse;width:100%;font-size:9pt;margin-bottom:18px}th,td{border:1px solid #777;padding:5px;text-align:left;vertical-align:top}th{background:#eaf0f5}img{max-width:70px;max-height:70px}</style></head><body><h1>ทะเบียนข้อมูลวัด คณะสงฆ์อำเภออาจสามารถ จังหวัดร้อยเอ็ด</h1>';
+ ZONES.forEach(zone=>{
+  html+=`<h2>${escapeHtml(zone)}</h2><table><thead><tr>${FIELDS.map(f=>`<th>${escapeHtml(f.label)}</th>`).join('')}</tr></thead><tbody>`;
+  const records=data[zone];
+  (records.length?records:[emptyRecord()]).forEach(r=>{html+='<tr>'+FIELDS.map(f=>`<td>${escapeHtml(r[f.key]||'')}</td>`).join('')+'</tr>';});
+  html+='</tbody></table>';
+ });
+ html+='</body></html>';
+ downloadBlob(html,'application/msword;charset=utf-8','ทะเบียนข้อมูลวัด_อำเภออาจสามารถ.doc');
+}
+function printPrompt(){
+ const answer=prompt('ต้องการพิมพ์แบบใด?\nพิมพ์ 1 = เฉพาะเขตปัจจุบัน ('+currentZone+')\nพิมพ์ 2 = รวมทุกเขตทั้งอำเภอ','1');
+ if(answer===null)return;
+ if(answer.trim()==='1')printZones=[currentZone];
+ else if(answer.trim()==='2')printZones=[...ZONES];
+ else{showToast('กรุณาเลือก 1 หรือ 2');return;}
+ renderPrintView();
+}
+function renderPrintView(){
+ const container=$('table-container');
+ const originalZone=currentZone;
+ if(printZones.length===1){currentZone=printZones[0];$('current-zone-title').textContent='ทะเบียนข้อมูลวัด — '+currentZone;renderTable();}
+ else{
+  let html='';
+  printZones.forEach(zone=>{
+   const records=data[zone].length?data[zone]:[emptyRecord()];
+   html+=`<h2>${escapeHtml(zone)}</h2><div class="table-scroll"><table class="data"><thead><tr><th>ลำดับ</th>${FIELDS.map(f=>`<th>${escapeHtml(f.label)}</th>`).join('')}<th>รูปภาพ</th></tr></thead><tbody>`;
+   records.forEach((r,i)=>{
+    html+=`<tr><td>${i+1}</td>${FIELDS.map(f=>`<td>${escapeHtml(r[f.key]||'')}</td>`).join('')}<td><div class="image-grid">${IMAGE_FIELDS.map(f=>r[f.key]?`<div class="image-slot">${escapeHtml(f.label)}<img src="${r[f.key]}" alt="${escapeHtml(f.label)}"></div>`:'').join('')}</div></td></tr>`;
+   });
+   html+='</tbody></table></div>';
+  });
+  container.innerHTML=html;$('current-zone-title').textContent='ทะเบียนข้อมูลวัด — รวมทุกเขตทั้งอำเภอ';
+ }
+ window.onafterprint=()=>{printZones=null;currentZone=originalZone;$('current-zone-title').textContent='ทะเบียนข้อมูลวัด — '+currentZone;renderTable();window.onafterprint=null;};
+ window.print();
+}
+function init(){
+ makeZoneButtons();renderTable();
+ $('admin-toggle').addEventListener('click',()=>$('login-box').classList.toggle('hide'));
+ $('login-form').addEventListener('submit',event=>{event.preventDefault();if($('admin-password').value==='12345'){isAdmin=true;$('admin-password').value='';updateRoleUI();showToast('เข้าสู่โหมดแอดมินสำเร็จ');}else{$('role-message').textContent='รหัสผ่านไม่ถูกต้อง';showToast('รหัสผ่านไม่ถูกต้อง');}});
+ $('logout-btn').addEventListener('click',()=>{isAdmin=false;updateRoleUI();});
+ $('add-row').addEventListener('click',addRow);
+ $('save-all').addEventListener('click',saveCurrentZone);
+ $('export-excel').addEventListener('click',exportExcel);
+ $('export-word').addEventListener('click',exportWord);
+ $('print-current').addEventListener('click',printPrompt);
+ updateRoleUI();
+}
+init();
+})();
+</script>
+</body>
+</html>
